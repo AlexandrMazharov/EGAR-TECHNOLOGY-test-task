@@ -4,7 +4,7 @@
 
 }
 .main{
-
+flex-wrap: wrap;
   min-height: 100vh;
   display: flex;
   justify-content: space-around;
@@ -40,9 +40,7 @@
 }
 
 .row__item {
-  box-sizing: border-box;
   width: 25%;
-  min-width: 220px;
   padding: .75em .75em .75em .75em
 }
 
