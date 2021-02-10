@@ -1,3 +1,6 @@
+<div class="alert" *ngIf="statusMessage">
+  {{statusMessage}}
+</div>
 <div class="main">
   <div class="chart">
     <app-chart></app-chart>
@@ -21,12 +24,6 @@
   </div>
 </div>
 
-
-
-<div>
-  {{statusMessage}}
-</div>
-<!--шаблон для чтения-->
 <ng-template #readOnlyTemplate let-document>
   <div class="table__row">
     <div class="row__item--display-none"> {{document?.id}}</div>
@@ -50,10 +47,6 @@
     <input matInput [(ngModel)]="editedDocument.date" type="date">
   </mat-form-field>
 
-  <!--  <mat-form-field class="row__item" appearance="fill">-->
-  <!--    <mat-label>Компания</mat-label>-->
-  <!--    <input matInput [(ngModel)]="editedDocument.company" type="text">-->
-  <!--  </mat-form-field>-->
   <mat-form-field class="row__item" appearance="fill">
     <mat-label>Компания</mat-label>
     <mat-select [(ngModel)]="editedDocument.company">

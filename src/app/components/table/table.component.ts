@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {DocumentModel} from '../../models/document.model';
 import {DocumentService} from '../../service/document.service';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogModule} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {ModalWindowComponent} from '../modal-window/modal-window.component';
 import {ECompany} from '../../models/ECompany';
 import {ChartComponent} from '../chart/chart.component';
@@ -16,7 +16,7 @@ export class TableComponent implements OnInit {
   @ViewChild('readOnlyTemplate', {static: false}) readOnlyTemplate: TemplateRef<any>;
   @ViewChild('editTemplate', {static: false}) editTemplate: TemplateRef<any>;
 
-  @ViewChild(ChartComponent ) child: ChartComponent ;
+  @ViewChild(ChartComponent) child: ChartComponent;
   editedDocument: DocumentModel;
   public documents: Array<DocumentModel>;
   isNewRecord: boolean;
@@ -48,8 +48,6 @@ export class TableComponent implements OnInit {
 
   private loadDocuments(): void {
     this.documentService.getDocuments().subscribe((data: DocumentModel[]) => {
-      // console.log(data);
-      // this.child.loadData();
       this.documents = Object.values(data);
     });
   }
@@ -63,7 +61,6 @@ export class TableComponent implements OnInit {
     this.editedDocument.price = document.price;
   }
 
-  // загружаем один из двух шаблонов
   loadTemplate(doc: DocumentModel): any {
     if (this.editedDocument && this.editedDocument.id === doc.id) {
       return this.editTemplate;
@@ -72,26 +69,23 @@ export class TableComponent implements OnInit {
     }
   }
 
-  // сохраняем
   saveDocument(): void {
     if (this.isNewRecord) {
-      // добавляем
       this.documentService.sendDocument(this.editedDocument).subscribe(data => {
         this.statusMessage = 'Данные успешно добавлены',
           this.loadDocuments();
-      }, error => {
-        this.statusMessage = 'Ошибка добавления!',
-          this.loadDocuments();
+      }, () => {
+        alert('Ошибка добавления!');
+        this.loadDocuments();
       });
       this.isNewRecord = false;
       this.editedDocument = null;
     } else {
-      // изменяем
       this.documentService.updateDocument(this.editedDocument).subscribe(data => {
         this.statusMessage = 'Данные успешно обновлены',
           this.loadDocuments();
         this.child.loadData();
-      }, error => {
+      }, () => {
         this.statusMessage = 'Ошибка изменения! ',
           this.loadDocuments();
       });
@@ -99,9 +93,7 @@ export class TableComponent implements OnInit {
     }
   }
 
-  // отмена редактирования
   cancel(): void {
-    // если отмена при добавлении, удаляем последнюю запись
     if (this.isNewRecord) {
       this.documents.pop();
       this.isNewRecord = false;
@@ -109,16 +101,15 @@ export class TableComponent implements OnInit {
     this.editedDocument = null;
   }
 
-  // удаление
-  deleteDocument(role: DocumentModel): void {
+  deleteDocument(doc: DocumentModel): void {
     console.log('delete');
-    // this.documentService.deleteRole(role?.roleId).subscribe(data => {
-    //   this.statusMessage = 'Данные успешно удалены',
-    //     this.loadDocuments();
-    // }, error => {
-    //   this.statusMessage = 'Ошибка удаления роли! Роль не удалена.',
-    //     this.loadDocuments();
-    // });
+    this.documentService.deleteDocument(doc).subscribe(() => {
+      this.statusMessage = 'Данные успешно удалены',
+        this.loadDocuments();
+    }, () => {
+      this.statusMessage = 'Ошибка удаления!',
+        this.loadDocuments();
+    });
   }
 
   openDialog(): void {

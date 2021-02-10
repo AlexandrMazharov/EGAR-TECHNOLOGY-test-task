@@ -10,19 +10,19 @@
       "id": "2",
       "date": "2021-02-12",
       "company": "Сбербанк",
-      "price": 2500
+      "price": 250
     },
     {
       "id": "3",
       "date": "2021-02-12",
       "company": "Автоваз",
-      "price": 2000
+      "price": 20003
     },
     {
       "id": "4",
       "date": "2021-03-12",
-      "company": "Газпром",
-      "price": 2000
+      "company": "Автоваз",
+      "price": 200
     },
     {
       "date": "2021-03-12",
@@ -39,7 +39,7 @@
     {
       "id": "nTDv3O_",
       "date": "2021-02-19",
-      "company": "Газпром",
+      "company": "Автоваз",
       "price": 2500
     },
     {
@@ -49,25 +49,25 @@
       "id": "lcaoKju"
     },
     {
-      "company": "Газпром",
+      "company": "Автоваз",
       "id": "vwuH_-F",
       "date": "2021-02-11",
-      "price": 2344
+      "price": 2345
     },
     {
       "date": "2021-02-18",
       "company": "Газпром",
-      "price": 3342,
+      "price": 334,
       "id": "xROczQX"
     },
     {
       "company": "Газпром",
-      "price": 1234,
+      "price": 12342,
       "id": "OCQw2W_",
       "date": "2021-05-27"
     },
     {
-      "company": "Автоваз",
+      "company": "Газпром",
       "price": 1234,
       "id": "fBBpbrH",
       "date": "2021-02-27"
@@ -77,6 +77,12 @@
       "price": 1234,
       "id": "jC1KfPQ",
       "date": "2021-02-18"
+    },
+    {
+      "company": "Автоваз",
+      "price": 12312,
+      "id": "9QqsN-W",
+      "date": "2021-02-19"
     }
   ]
 }

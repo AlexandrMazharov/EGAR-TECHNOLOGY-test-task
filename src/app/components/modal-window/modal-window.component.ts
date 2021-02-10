@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {DocumentModel} from '../../models/document.model';
 import {ECompany} from '../../models/ECompany';
 
@@ -10,13 +10,14 @@ import {ECompany} from '../../models/ECompany';
 export class ModalWindowComponent {
   public document: DocumentModel;
   public company: Array<string>;
+
   constructor() {
     this.document = new DocumentModel();
     this.getCompany();
   }
+
   getCompany(): void {
     const enumValues: Array<string> = [];
-
     for (const value in ECompany) {
       if (typeof ECompany[value] === 'number') {
         enumValues.push(value);
@@ -24,7 +25,4 @@ export class ModalWindowComponent {
     }
     this.company = enumValues;
   }
-
-
-
 }

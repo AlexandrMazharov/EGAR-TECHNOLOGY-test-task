@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DocumentService} from '../../service/document.service';
 
 @Component({
@@ -8,8 +8,8 @@ import {DocumentService} from '../../service/document.service';
 })
 export class ChartComponent implements OnInit {
   chartType = 'line';
-  // chartDatasets: Array<any> = [];
-  // chartLabels: Array<any> = [];
+  public chartDatasets: Array<any> = [];
+  public chartLabels: Array<any> = [];
   isLoad = false;
   chartOptions = {responsive: true};
   chartColors = [
@@ -29,36 +29,29 @@ export class ChartComponent implements OnInit {
     const setLabel = new Set();
     this.chartDatasets = [];
     this.documentService.getDataset().subscribe(res => {
-      // получили массив лейблов
       console.log(res);
       res.forEach((item) => {
-        for (var key in item) {
-          // console.log(item[key]);
+        for (let key in item) {
           if (item[key].date !== undefined) {
             setLabel.add(item[key].date);
           }
-          // this.datesLabels.push(item[key].date);
         }
         this.chartLabels = Array.from(setLabel).sort();
       });
 
       res.forEach((item) => {
         const datasetItem = {data: [], label: ''};
-        for (var key in item) {
+        for (const key in item) {
           console.log(item[key]);
           datasetItem.data.push(item[key].price);
           datasetItem.label = item[key].company;
         }
         this.chartDatasets.push(datasetItem);
-        // this.datesLabels = Array.from(setLabel);
       });
       console.log(this.chartDatasets);
       this.isLoad = true;
     });
-
-
   }
-
 
   ngOnInit(): void {
     this.loadData();
@@ -67,23 +60,10 @@ export class ChartComponent implements OnInit {
   constructor(private documentService: DocumentService) {
   }
 
-
-  public chartDatasets: Array<any> = [];
-  // [
-  //   {data: [65, 59, 80, 81, 56, 55, 40], label: 'My First dataset'},
-  //   {data: [28, 48, 40, 19, 86, 27, 90], label: 'My Second dataset'}
-  // ];
-
-  public chartLabels: Array<any> = [];
-
-  // ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
-
   public chartClicked(e: any): void {
   }
 
   public chartHovered(e: any): void {
   }
-
 
 }

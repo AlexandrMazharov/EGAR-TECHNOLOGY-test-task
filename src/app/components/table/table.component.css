@@ -4,11 +4,13 @@
 
 }
 .main{
+
   min-height: 100vh;
   display: flex;
   justify-content: space-around;
   width: 100vw;
-  padding: .2em;
+  padding: 3em .2em;
+
 }
 .chart{
   min-width: 40vw;
@@ -48,4 +50,14 @@
 .row__item--display-none {
   display: none;
 
+}
+.alert{
+  width: 100vw;
+  z-index: 2;
+  background-color: rgba(103, 158, 183, 0.7);
+  opacity: .5;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  padding: .5em;
 }

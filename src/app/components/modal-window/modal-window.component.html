@@ -1,4 +1,5 @@
 <h2 mat-dialog-title>Добавить запись</h2>
+
 <mat-dialog-content class="mat-typography">
 
   <mat-form-field class="display-none" appearance="fill">
@@ -11,31 +12,24 @@
     <input matInput [(ngModel)]="document.date" type="date">
   </mat-form-field>
 
-  <!--  <mat-form-field class="row__item" appearance="fill">-->
-  <!--    <mat-label>Компания</mat-label>-->
-  <!--    <input matInput [(ngModel)]="editedDocument.company" type="text">-->
-  <!--  </mat-form-field>-->
   <mat-form-field class="row__item" appearance="fill">
     <mat-label>Компания</mat-label>
-    <mat-select [(ngModel)]="document.company">
+    <mat-select [(ngModel)]="document.company"  required="true" >
       <mat-option *ngFor="let comp of company" value="{{comp}}">{{comp}}</mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field class="row__item" appearance="fill">
     <mat-label>Цена</mat-label>
-    <input matInput [(ngModel)]="document.price" type="number">
+    <input matInput [(ngModel)]="document.price" type="number"  required="true" >
   </mat-form-field>
 
 
-
-<!--  <input type="date" [(ngModel)]="document.date">-->
-<!--  <input type="text" [(ngModel)]="document.company">-->
-<!--  <input type="number" [(ngModel)]="document.price">-->
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-<!--  <button mat-raised-button color="primary" mat-dialog-close value="Сохранить" (click)="saveDocument()">Сохранить</button>-->
-<!--  <button mat-raised-button color="primary" value="Отмена" (click)="cancel()">Отмена</button>-->
   <button mat-button mat-dialog-close>Отмена</button>
-  <button mat-button [mat-dialog-close]="document" cdkFocusInitial>Добавить</button>
+  <div *ngIf="document.price && document.company">
+    <button mat-button [mat-dialog-close]="document" cdkFocusInitial type="submit">Добавить</button>
+  </div>
+
 </mat-dialog-actions>
