@@ -59,6 +59,24 @@
       "company": "Газпром",
       "price": 3342,
       "id": "xROczQX"
+    },
+    {
+      "company": "Газпром",
+      "price": 1234,
+      "id": "OCQw2W_",
+      "date": "2021-05-27"
+    },
+    {
+      "company": "Автоваз",
+      "price": 1234,
+      "id": "fBBpbrH",
+      "date": "2021-02-27"
+    },
+    {
+      "company": "Сбербанк",
+      "price": 1234,
+      "id": "jC1KfPQ",
+      "date": "2021-02-18"
     }
   ]
 }

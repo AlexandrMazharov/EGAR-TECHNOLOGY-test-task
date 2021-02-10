@@ -27,27 +27,29 @@ export class ChartComponent implements OnInit {
 
   public loadData(): void {
     const setLabel = new Set();
-    const dataset = [];
+    this.chartDatasets = [];
     this.documentService.getDataset().subscribe(res => {
       // получили массив лейблов
       console.log(res);
       res.forEach((item) => {
         for (var key in item) {
           // console.log(item[key]);
-          setLabel.add(item[key].date);
+          if (item[key].date !== undefined) {
+            setLabel.add(item[key].date);
+          }
           // this.datesLabels.push(item[key].date);
         }
         this.chartLabels = Array.from(setLabel).sort();
       });
 
       res.forEach((item) => {
-        const datesetItem = {data: [], label: ''};
+        const datasetItem = {data: [], label: ''};
         for (var key in item) {
           console.log(item[key]);
-          datesetItem.data.push(item[key].price);
-          datesetItem.label = item[key].company;
+          datasetItem.data.push(item[key].price);
+          datasetItem.label = item[key].company;
         }
-        this.chartDatasets.push(datesetItem);
+        this.chartDatasets.push(datasetItem);
         // this.datesLabels = Array.from(setLabel);
       });
       console.log(this.chartDatasets);

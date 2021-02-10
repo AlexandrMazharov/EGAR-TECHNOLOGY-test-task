@@ -8,7 +8,7 @@
   display: flex;
   justify-content: space-around;
   width: 100vw;
-  padding: 20px;
+  padding: .2em;
 }
 .chart{
   min-width: 40vw;
@@ -16,8 +16,6 @@
 }
 .table {
   min-width: 40vw;
-
-
 
 }
 .table__body{
@@ -33,7 +31,7 @@
   border-bottom: 1px solid;
   width: 100%;
   display: flex;
-  padding: 10px;
+  padding: 2em;
   justify-content: flex-start;
 }
 .header__item{
@@ -43,7 +41,8 @@
 .row__item {
   box-sizing: border-box;
   width: 25%;
-  padding: 4px 7px;
+  min-width: 220px;
+  padding: .75em .75em 0 .75em
 }
 
 .row__item--display-none {
