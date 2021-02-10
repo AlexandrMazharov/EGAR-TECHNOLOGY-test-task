@@ -1,0 +1,73 @@
+<div class="main">
+  <div class="chart">
+    <app-chart></app-chart>
+  </div>
+  <div class="table">
+
+    <div class="table__header">
+      <div class="header__item">Дата</div>
+      <div class="header__item">Компания</div>
+      <div class="header__item">Цена</div>
+
+    </div>
+    <div class="table__body">
+      <div *ngFor="let document of documents">
+        <ng-template [ngTemplateOutlet]="loadTemplate(document)"
+                     [ngTemplateOutletContext]="{$implicit: document}"></ng-template>
+      </div>
+    </div>
+
+    <button mat-raised-button (click)="openDialog()">Добавить</button>
+  </div>
+</div>
+
+
+
+<div>
+  {{statusMessage}}
+</div>
+<!--шаблон для чтения-->
+<ng-template #readOnlyTemplate let-document>
+  <div class="table__row">
+    <div class="row__item--display-none"> {{document?.id}}</div>
+    <div class="row__item"> {{document?.date}}</div>
+    <div class="row__item"> {{document?.company}}</div>
+    <div class="row__item"> {{document?.price}}</div>
+    <button mat-raised-button value="Изменить" (click)="editDocument(document)">Изменить</button>
+    <button mat-raised-button value="Удалить" (click)="deleteDocument(document)">Удалить</button>
+  </div>
+</ng-template>
+<!--шаблон для редактирования-->
+<ng-template #editTemplate>
+
+  <mat-form-field class="row__item--display-none" appearance="fill">
+    <mat-label>id</mat-label>
+    <input matInput [(ngModel)]="editedDocument.id">
+  </mat-form-field>
+
+  <mat-form-field class="row__item" appearance="fill">
+    <mat-label>Дата</mat-label>
+    <input matInput [(ngModel)]="editedDocument.date" type="date">
+  </mat-form-field>
+
+  <!--  <mat-form-field class="row__item" appearance="fill">-->
+  <!--    <mat-label>Компания</mat-label>-->
+  <!--    <input matInput [(ngModel)]="editedDocument.company" type="text">-->
+  <!--  </mat-form-field>-->
+  <mat-form-field class="row__item" appearance="fill">
+    <mat-label>Компания</mat-label>
+    <mat-select [(ngModel)]="editedDocument.company">
+      <mat-option *ngFor="let comp of company" value="{{comp}}">{{comp}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="row__item" appearance="fill">
+    <mat-label>Цена</mat-label>
+    <input matInput [(ngModel)]="editedDocument.price" type="number">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" value="Сохранить" (click)="saveDocument()">Сохранить</button>
+  <button mat-raised-button color="primary" value="Отмена" (click)="cancel()">Отмена</button>
+
+</ng-template>
+
