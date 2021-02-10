@@ -47,8 +47,9 @@ export class TableComponent implements OnInit {
   }
 
   private loadDocuments(): void {
-    this.documentService.getDocuments().subscribe((data: DocumentModel[]) => {
-      this.documents = Object.values(data);
+    this.documentService.getDocuments().subscribe((d: DocumentModel[]) => {
+      // const result = words.filter(word => word.length > 6);
+      this.documents = Object.values(d).filter((item) => item.price !== null);
     });
   }
 
@@ -71,7 +72,7 @@ export class TableComponent implements OnInit {
 
   saveDocument(): void {
     if (this.isNewRecord) {
-      this.documentService.sendDocument(this.editedDocument).subscribe(data => {
+      this.documentService.sendDocument(this.editedDocument).subscribe(() => {
         this.statusMessage = 'Данные успешно добавлены',
           this.loadDocuments();
       }, () => {
@@ -106,6 +107,7 @@ export class TableComponent implements OnInit {
     this.documentService.deleteDocument(doc).subscribe(() => {
       this.statusMessage = 'Данные успешно удалены',
         this.loadDocuments();
+      this.child.loadData();
     }, () => {
       this.statusMessage = 'Ошибка удаления!',
         this.loadDocuments();
@@ -117,8 +119,11 @@ export class TableComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
-      this.documentService.sendDocument(result).subscribe(() => this.loadDocuments());
-      this.child.loadData();
+      this.documentService.uploadDocument(result).subscribe(() => {
+          this.loadDocuments();
+          this.child.loadData();
+        }
+      );
     });
   }
 }

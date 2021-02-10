@@ -1,88 +1,196 @@
 {
   "documents": [
     {
-      "id": "1",
-      "date": "2021-02-12",
-      "company": "Газпром",
-      "price": 2000
-    },
-    {
-      "id": "2",
-      "date": "2021-02-12",
-      "company": "Сбербанк",
-      "price": 250
-    },
-    {
-      "id": "3",
-      "date": "2021-02-12",
-      "company": "Автоваз",
-      "price": 20003
-    },
-    {
-      "id": "4",
-      "date": "2021-03-12",
-      "company": "Автоваз",
-      "price": 200
-    },
-    {
-      "date": "2021-03-12",
-      "company": "Автоваз",
-      "price": 2263,
-      "id": "vMrA7MA"
-    },
-    {
-      "company": "Сбербанк",
-      "id": "jFJFuD-",
-      "price": 2000,
-      "date": "2021-03-12"
-    },
-    {
-      "id": "nTDv3O_",
-      "date": "2021-02-19",
-      "company": "Автоваз",
-      "price": 2500
-    },
-    {
-      "date": "2021-03-12",
-      "company": "Сбербанк",
-      "price": 3030,
-      "id": "lcaoKju"
-    },
-    {
-      "company": "Автоваз",
-      "id": "vwuH_-F",
       "date": "2021-02-11",
-      "price": 2345
+      "company": "Сбербанк",
+      "price": null,
+      "id": 1
+    },
+    {
+      "date": "2021-02-11",
+      "company": "Газпром",
+      "price": null,
+      "id": 2
+    },
+    {
+      "date": "2021-02-11",
+      "company": "Автоваз",
+      "price": 400,
+      "id": 3
+    },
+    {
+      "date": "2021-03-12",
+      "company": "Сбербанк",
+      "price": null,
+      "id": 4
+    },
+    {
+      "date": "2021-03-12",
+      "company": "Автоваз",
+      "price": null,
+      "id": 5
+    },
+    {
+      "date": "2021-03-12",
+      "company": "Газпром",
+      "price": 500,
+      "id": 6
+    },
+    {
+      "date": "2021-02-18",
+      "company": "Сбербанк",
+      "price": null,
+      "id": 7
     },
     {
       "date": "2021-02-18",
       "company": "Газпром",
-      "price": 334,
-      "id": "xROczQX"
+      "price": null,
+      "id": 8
     },
     {
-      "company": "Газпром",
-      "price": 12342,
-      "id": "OCQw2W_",
-      "date": "2021-05-27"
-    },
-    {
-      "company": "Газпром",
-      "price": 1234,
-      "id": "fBBpbrH",
-      "date": "2021-02-27"
-    },
-    {
-      "company": "Сбербанк",
-      "price": 1234,
-      "id": "jC1KfPQ",
-      "date": "2021-02-18"
-    },
-    {
+      "date": "2021-02-18",
       "company": "Автоваз",
-      "price": 12312,
-      "id": "9QqsN-W",
-      "date": "2021-02-19"
+      "price": 23,
+      "id": 9
+    },
+    {
+      "date": "2021-04-09",
+      "company": "Сбербанк",
+      "price": null,
+      "id": 10
+    },
+    {
+      "date": "2021-04-09",
+      "company": "Газпром",
+      "price": null,
+      "id": 11
+    },
+    {
+      "date": "2021-04-09",
+      "company": "Автоваз",
+      "price": 55,
+      "id": 12
+    },
+    {
+      "date": "2021-10-14",
+      "company": "Сбербанк",
+      "price": null,
+      "id": 13
+    },
+    {
+      "date": "2021-10-14",
+      "company": "Газпром",
+      "price": null,
+      "id": 14
+    },
+    {
+      "date": "2021-10-14",
+      "company": "Автоваз",
+      "price": 555,
+      "id": 15
+    },
+    {
+      "date": "2020-09-18",
+      "company": "Автоваз",
+      "price": null,
+      "id": 16
+    },
+    {
+      "date": "2020-09-18",
+      "company": "Газпром",
+      "price": null,
+      "id": 17
+    },
+    {
+      "date": "2020-09-18",
+      "company": "Сбербанк",
+      "price": 11,
+      "id": 18
+    },
+    {
+      "date": "2021-03-19",
+      "company": "Автоваз",
+      "price": null,
+      "id": 19
+    },
+    {
+      "date": "2021-03-19",
+      "company": "Газпром",
+      "price": null,
+      "id": 20
+    },
+    {
+      "date": "2021-03-19",
+      "company": "Сбербанк",
+      "price": 80,
+      "id": 21
+    },
+    {
+      "date": "2021-04-24",
+      "company": "Сбербанк",
+      "price": null,
+      "id": 22
+    },
+    {
+      "date": "2021-04-24",
+      "company": "Газпром",
+      "price": null,
+      "id": 23
+    },
+    {
+      "date": "2021-02-11",
+      "company": "Сбербанк",
+      "price": null,
+      "id": 25
+    },
+    {
+      "date": "2021-02-11",
+      "company": "Газпром",
+      "price": null,
+      "id": 26
+    },
+    {
+      "date": "2021-04-10",
+      "company": "Сбербанк",
+      "price": null,
+      "id": 28
+    },
+    {
+      "date": "2021-04-10",
+      "company": "Газпром",
+      "price": null,
+      "id": 29
+    },
+    {
+      "date": "2021-02-26",
+      "company": "Сбербанк",
+      "price": null,
+      "id": 31
+    },
+    {
+      "date": "2021-02-26",
+      "company": "Автоваз",
+      "price": null,
+      "id": 32
+    },
+    {
+      "date": "2021-02-11",
+      "company": "Сбербанк",
+      "price": null,
+      "id": 33
+    },
+    {
+      "date": "2021-02-11",
+      "company": "Газпром",
+      "price": null,
+      "id": 34
+    },
+    {
+      "date": "2021-02-11",
+      "company": "Автоваз",
+      "price": 77,
+      "id": 35
     }
   ]
 }

@@ -10,12 +10,11 @@ export class ChartComponent implements OnInit {
   chartType = 'line';
   public chartDatasets: Array<any> = [];
   public chartLabels: Array<any> = [];
-  isLoad = false;
   chartOptions = {responsive: true};
   chartColors = [
     {
-      backgroundColor: 'rgba(105, 0, 132, .2)',
-      borderColor: 'rgba(200, 99, 132, .7)',
+      backgroundColor: 'rgba(238,21,21,0.2)',
+      borderColor: 'rgba(241,10,10,0.7)',
       borderWidth: 2,
     },
     {
@@ -29,7 +28,6 @@ export class ChartComponent implements OnInit {
     const setLabel = new Set();
     this.chartDatasets = [];
     this.documentService.getDataset().subscribe(res => {
-      console.log(res);
       res.forEach((item) => {
         for (let key in item) {
           if (item[key].date !== undefined) {
@@ -42,14 +40,11 @@ export class ChartComponent implements OnInit {
       res.forEach((item) => {
         const datasetItem = {data: [], label: ''};
         for (const key in item) {
-          console.log(item[key]);
           datasetItem.data.push(item[key].price);
           datasetItem.label = item[key].company;
         }
         this.chartDatasets.push(datasetItem);
       });
-      console.log(this.chartDatasets);
-      this.isLoad = true;
     });
   }
 

@@ -30,11 +30,11 @@
     <div class="row__item"> {{document?.date}}</div>
     <div class="row__item"> {{document?.company}}</div>
     <div class="row__item"> {{document?.price}}</div>
+
     <button mat-raised-button value="Изменить" (click)="editDocument(document)">Изменить</button>
     <button mat-raised-button value="Удалить" (click)="deleteDocument(document)">Удалить</button>
   </div>
 </ng-template>
-<!--шаблон для редактирования-->
 <ng-template #editTemplate>
 
   <mat-form-field class="row__item--display-none" appearance="fill">

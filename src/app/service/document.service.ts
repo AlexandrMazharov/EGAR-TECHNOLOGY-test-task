@@ -33,15 +33,32 @@ export class DocumentService {
     return this.httpClient.patch(updateUrl, this.toObject(doc)).pipe(
       catchError(err => {
           alert('Ошибка');
-          console.log(err);
           return throwError(err);
         }
       )
     );
   }
 
+  public uploadDocument(doc: DocumentModel): Observable<any> {
+    const requests = [];
+    for (const value in ECompany) {
+      if (typeof ECompany[value] === 'number') {
+
+        if (value !== doc.company) {
+          const document = new DocumentModel();
+          document.date = doc.date;
+          document.price = null;
+          document.company = value;
+          requests.push(this.httpClient.post(this.URL, this.toObject(document)));
+        }
+      }
+    }
+    requests.push(this.httpClient.post(this.URL, this.toObject(doc)));
+    return forkJoin(requests);
+  }
+
   public sendDocument(doc: DocumentModel): any {
-    console.log(doc);
+
     return this.httpClient.post(this.URL, this.toObject(doc)).pipe(
       catchError(err => {
         alert('Ошибка');
@@ -69,7 +86,6 @@ export class DocumentService {
         return throwError(err);
       })
     );
-
   }
 
 }
