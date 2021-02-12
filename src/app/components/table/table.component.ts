@@ -5,6 +5,7 @@ import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {ModalWindowComponent} from '../modal-window/modal-window.component';
 import {ECompany} from '../../models/ECompany';
 import {ChartComponent} from '../chart/chart.component';
+import {concat, forkJoin, merge} from 'rxjs';
 
 @Component({
   selector: 'app-table',
@@ -22,12 +23,12 @@ export class TableComponent implements OnInit {
   isNewRecord: boolean;
   public statusMessage = '';
   public company;
+  private oldDate: string;
 
   constructor(private  documentService: DocumentService,
               public  dialog: MatDialog,
               @Inject(MAT_DIALOG_DATA) public data: DocumentModel) {
     this.documents = new Array<DocumentModel>();
-    // console.log(this.data);
   }
 
   getCompany(): void {
@@ -48,7 +49,6 @@ export class TableComponent implements OnInit {
 
   private loadDocuments(): void {
     this.documentService.getDocuments().subscribe((d: DocumentModel[]) => {
-      // const result = words.filter(word => word.length > 6);
       this.documents = Object.values(d).filter((item) => item.price !== null);
     });
   }
@@ -60,6 +60,7 @@ export class TableComponent implements OnInit {
     this.editedDocument.date = document.date;
     this.editedDocument.company = document.company;
     this.editedDocument.price = document.price;
+    this.oldDate = document.date;
   }
 
   loadTemplate(doc: DocumentModel): any {
@@ -82,10 +83,20 @@ export class TableComponent implements OnInit {
       this.isNewRecord = false;
       this.editedDocument = null;
     } else {
-      this.documentService.updateDocument(this.editedDocument).subscribe(data => {
-        this.statusMessage = 'Данные успешно обновлены',
-          this.loadDocuments();
-        this.child.loadData();
+      this.documentService.updateDocument(this.editedDocument).subscribe(editedDocument => {
+        this.documentService.getByDate(this.oldDate).subscribe(
+          documents => {
+            for (const i in documents) {
+              if (documents[i].price == null) {
+                documents[i].date = editedDocument.date;
+                this.documentService.updateDocument(documents[i]).subscribe(() => {
+                  this.child.loadData();
+                  this.statusMessage = 'Данные успешно обновлены';
+                });
+              }
+            }
+          });
+
       }, () => {
         this.statusMessage = 'Ошибка изменения! ',
           this.loadDocuments();
@@ -104,14 +115,25 @@ export class TableComponent implements OnInit {
 
   deleteDocument(doc: DocumentModel): void {
     console.log('delete');
-    this.documentService.deleteDocument(doc).subscribe(() => {
-      this.statusMessage = 'Данные успешно удалены',
-        this.loadDocuments();
-      this.child.loadData();
-    }, () => {
-      this.statusMessage = 'Ошибка удаления!',
-        this.loadDocuments();
-    });
+
+    this.documentService.getByDate(doc.date).subscribe(
+      documents => {
+        const requests = [];
+        for (const i in documents) {
+          if (documents[i].price == null) {
+            this.documentService.deleteDocument(documents[i]).subscribe(() => {
+              this.statusMessage = 'Данные успешно удалены';
+              this.loadDocuments();
+              // this.child.loadData();
+            });
+          }
+        }
+        this.documentService.deleteDocument(doc).subscribe(() => {
+          this.statusMessage = 'Данные успешно удалены';
+          this.loadDocuments();
+          this.child.loadData();
+        });
+      });
   }
 
   openDialog(): void {

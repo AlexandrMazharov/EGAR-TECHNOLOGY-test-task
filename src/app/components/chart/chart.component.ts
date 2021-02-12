@@ -25,8 +25,10 @@ export class ChartComponent implements OnInit {
   ];
 
   public loadData(): void {
-    const setLabel = new Set();
+
+    const setLabel = new Set() ;
     this.chartDatasets = [];
+    this.chartLabels = [];
     this.documentService.getDataset().subscribe(res => {
       res.forEach((item) => {
         for (let key in item) {

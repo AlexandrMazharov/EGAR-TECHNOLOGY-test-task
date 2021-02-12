@@ -1,10 +1,58 @@
 {
   "documents": [
     {
-      "date": "2021-02-11",
-      "company": "Автоваз",
-      "price": 888,
+      "date": "2021-02-10",
+      "company": "Сбербанк",
+      "price": null,
       "id": 1
+    },
+    {
+      "date": "2021-02-10",
+      "company": "Газпром",
+      "price": null,
+      "id": 2
+    },
+    {
+      "date": "2021-02-10",
+      "company": "Автоваз",
+      "price": 3,
+      "id": 3
+    },
+    {
+      "date": "2021-02-25",
+      "company": "Сбербанк",
+      "price": null,
+      "id": 4
+    },
+    {
+      "date": "2021-02-25",
+      "company": "Автоваз",
+      "price": null,
+      "id": 5
+    },
+    {
+      "date": "2021-02-25",
+      "company": "Газпром",
+      "price": 666,
+      "id": 6
+    },
+    {
+      "date": "2021-02-10",
+      "company": "Сбербанк",
+      "price": null,
+      "id": 7
+    },
+    {
+      "date": "2021-02-10",
+      "company": "Автоваз",
+      "price": null,
+      "id": 8
+    },
+    {
+      "date": "2021-02-10",
+      "company": "Газпром",
+      "price": 91,
+      "id": 9
     }
   ]
 }
